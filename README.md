@@ -1,2 +1,1 @@
-# landing.cubics.io
-Landing de cubis
+# 2-landing.cubics.io

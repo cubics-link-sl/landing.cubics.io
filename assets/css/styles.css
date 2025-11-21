@@ -1,0 +1,158 @@
+/* ------------------------------
+   PALETA CUBICS (versió clara)
+------------------------------ */
+:root {
+  --cubics-blue: #4361EE;
+  --cubics-blue-dark: #2740b8;
+  --bg-page: #F5F7FB;        /* fons general com a l'app */
+  --bg-card: #FFFFFF;        /* targetes / panells */
+  --border-subtle: #E5E7EB;  /* bordes suaus */
+  --text-main: #111827;
+  --text-muted: #6B7280;
+}
+
+/* FONT GLOBAL */
+body {
+  font-family: "Mulish", sans-serif !important;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+}
+
+/* Helpers */
+.text-cubics {
+  color: var(--cubics-blue) !important;
+}
+
+.bg-cubics {
+  background-color: var(--cubics-blue) !important;
+}
+
+.badge-cubics {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background-color: rgba(67, 97, 238, 0.08);
+  color: var(--cubics-blue);
+}
+
+/* Botons */
+.btn-cubics-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.7rem 1.6rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background-color: var(--cubics-blue);
+  color: #fff;
+  box-shadow: 0 16px 32px -24px rgba(67, 97, 238, 0.9);
+  transition: background-color 0.15s ease-out, box-shadow 0.15s ease-out,
+              transform 0.1s ease-out;
+}
+
+.btn-cubics-primary:hover {
+  background-color: var(--cubics-blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px -26px rgba(67, 97, 238, 1);
+}
+
+.btn-cubics-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.55rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid rgba(67, 97, 238, 0.3);
+  background-color: #fff;
+  color: var(--cubics-blue);
+  transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
+}
+
+.btn-cubics-ghost:hover {
+  background-color: rgba(67, 97, 238, 0.06);
+  border-color: rgba(67, 97, 238, 0.5);
+}
+
+/* Cards tipus app */
+.card-cubics {
+  border-radius: 1.25rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 18px 40px -32px rgba(15, 23, 42, 0.45);
+}
+
+/* Nav del header com a l'app */
+.nav-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+  color: var(--cubics-blue);
+}
+
+.nav-link.active {
+  color: var(--cubics-blue);
+  border-bottom-color: var(--cubics-blue);
+}
+
+/* Cercador del hero */
+.hero-search {
+  border-radius: 9999px;
+  background-color: #fff;
+  box-shadow: 0 20px 50px -30px rgba(15, 23, 42, 0.6);
+}
+
+/* Icona rodona pels punts */
+.icon-circle {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(67, 97, 238, 0.5);
+  background: rgba(67, 97, 238, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Feature blocks per animació suau en scroll (opcional) */
+.feature-block {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.feature-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Marc per a les captures / vídeos dins les targetes */
+.media-frame {
+  border-radius: 1.1rem;
+  border: 1px solid var(--border-subtle);
+  background: #F9FAFB;
+  padding: 0.2rem;
+  box-shadow: 0 14px 30px -24px rgba(15, 23, 42, 0.45);
+  overflow: hidden;
+}
+
+.media-frame img,
+.media-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0.9rem;
+}
+
