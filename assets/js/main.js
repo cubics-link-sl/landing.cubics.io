@@ -80,6 +80,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // -------------------------------
+  // VIDEO MODAL PROXIMITAT
+  // -------------------------------
+  const proximamentModal = document.getElementById("proximament-modal");
+  const closeProximamentBtn = document.getElementById("proximament-close-modal-btn");
+
+  // Tots els botons amb text "Provar Cubics"
+  const provarBtns = Array.from(document.querySelectorAll("a"))
+    .filter(a => a.textContent.includes("Provar Cubics"));
+
+  // Obrir modal
+  provarBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault(); // evita anar al link real
+      proximamentModal.classList.remove("hidden");
+    });
+  });
+
+  // Tancar modal
+  closeProximamentBtn.addEventListener("click", () => {
+    proximamentModal.classList.add("hidden");
+  });
+
+  // Tancar clicant fora
+  proximamentModal.addEventListener("click", (e) => {
+    if (e.target === proximamentModal) {
+      proximamentModal.classList.add("hidden");
+    }
+  });
+
+
+  // -------------------------------
   // EMAILJS + VALIDACIÓ FORMULARI
   // -------------------------------
   const form = document.getElementById("contact-form");

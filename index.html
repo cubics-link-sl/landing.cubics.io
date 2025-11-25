@@ -274,22 +274,22 @@
 
         <!-- Media Proveïdors: captura o vídeo -->
         <div class="mt-4 space-y-3">
-          <button 
+          <!-- <button 
             class="demo-btn media-frame h-48 sm:h-56 w-full hover:opacity-80 transition relative group cursor-pointer"
             data-video-id="demo-providers"
             aria-label="Veure demo"
-          >
+          > -->
             <img
               src="./assets/img/screens/screen-4-borsasoli.png"
               alt="Vista de sol·licituds i respostes per a proveïdors a Cubics"
               class="w-full h-full"
             >
             <!-- Play icon overlay -->
-            <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition">
+            <!-- <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transition" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
-            </div>
+            </div> -->
           </button>
         </div>
       </article>
@@ -370,22 +370,22 @@
 
         <!-- Media Clients: captura o vídeo -->
         <div class="mt-4 space-y-3">
-          <button 
+          <!-- <button 
             class="demo-btn media-frame h-48 sm:h-56 w-full hover:opacity-80 transition relative group cursor-pointer"
             data-video-id="demo-clients"
             aria-label="Veure demo"
-          >
+          > -->
             <img
               src="./assets/img/screens/screen-3-pressupostos.png"
               alt="Vista de pressupostos i comandes per a clients a Cubics"
               class="w-full h-full"
             >
             <!-- Play icon overlay -->
-            <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition">
+            <!-- <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transition" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
-            </div>
+            </div> -->
           </button>
         </div>
       </article>
@@ -546,6 +546,42 @@
     </div>
   </div>
 </div>
+
+
+<!-- PROXIMAMENT MODAL -->
+<div id="proximament-modal" class="proximament-modal hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-md w-full p-7 text-center shadow-2xl animate-fadeIn">
+
+    <!-- Capçalera -->
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-xl font-semibold text-slate-900">
+        Pròximament!
+      </h3>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Contingut estilós -->
+    <p class="text-slate-600 leading-relaxed mb-6">
+      <span class="font-semibold text-slate-900">Cubics està a punt d’arribar!</span><br>
+      Estem posant les últimes peces al lloc perquè tot funcioni perfectament.  
+      Torna en uns dies i sigues dels primers a accedir-hi!
+    </p>
+
+    <!-- Botó -->
+    <button 
+      id="proximament-close-modal-btn"
+      class="px-6 py-2 bg-cubics text-white rounded-full font-medium hover:opacity-90 transition"
+    >
+      D’acord
+    </button>
+
+  </div>
+</div>
+
+
 
  <!-- 
   TO DO:
