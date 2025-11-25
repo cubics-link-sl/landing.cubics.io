@@ -23,6 +23,10 @@ body {
   color: var(--cubics-blue) !important;
 }
 
+.text-subrallat {
+  background-color:var(--cubics-blue);
+}
+
 .bg-cubics {
   background-color: var(--cubics-blue) !important;
 }
