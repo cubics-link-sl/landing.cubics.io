@@ -156,3 +156,26 @@ body {
   border-radius: 0.9rem;
 }
 
+/* VIDEO MODAL STYLES */
+.video-modal {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.video-modal.hidden {
+  display: none;
+}
+
+.video-modal iframe {
+  border: none;
+  border-radius: 0;
+}
+

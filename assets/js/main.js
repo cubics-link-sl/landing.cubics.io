@@ -21,6 +21,65 @@ document.addEventListener("DOMContentLoaded", () => {
   blocks.forEach((block) => observer.observe(block));
 
   // -------------------------------
+  // VIDEO MODAL FUNCTIONALITY
+  // -------------------------------
+  const videoModal = document.getElementById("video-modal");
+  const videoIframe = document.getElementById("video-iframe");
+  const closeModalBtn = document.getElementById("close-modal-btn");
+  const modalTitle = document.getElementById("modal-title");
+  const demoButtons = document.querySelectorAll(".demo-btn");
+
+  // URLs dels vídeos (canviar per les URLs reals dels vídeos)
+  const videoSources = {
+    "demo-providers": "https://www.youtube.com/embed/dQw4w9WgXcQ", // Canviar per URL real
+    "demo-clients": "https://www.youtube.com/embed/dQw4w9WgXcQ"    // Canviar per URL real
+  };
+
+  const videoTitles = {
+    "demo-providers": "Demo - Com a proveïdors del sector",
+    "demo-clients": "Demo - Com a clients del sector"
+  };
+
+  // Obrir modal
+  demoButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const videoId = btn.getAttribute("data-video-id");
+      const videoUrl = videoSources[videoId];
+      const title = videoTitles[videoId];
+
+      if (videoUrl) {
+        videoIframe.src = videoUrl;
+        modalTitle.textContent = title;
+        videoModal.classList.remove("hidden");
+        document.body.style.overflow = "hidden"; // Evitar scroll
+      }
+    });
+  });
+
+  // Tancar modal
+  function closeModal() {
+    videoModal.classList.add("hidden");
+    videoIframe.src = ""; // Parar el vídeo
+    document.body.style.overflow = "auto"; // Restaurar scroll
+  }
+
+  closeModalBtn.addEventListener("click", closeModal);
+
+  // Tancar modal al fer clic fora (en el fons negre)
+  videoModal.addEventListener("click", (e) => {
+    if (e.target === videoModal) {
+      closeModal();
+    }
+  });
+
+  // Tancar modal amb tecla Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !videoModal.classList.contains("hidden")) {
+      closeModal();
+    }
+  });
+
+  // -------------------------------
   // EMAILJS + VALIDACIÓ FORMULARI
   // -------------------------------
   const form = document.getElementById("contact-form");
