@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CUBICS LANDING</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="icon" type="image/png" href="./assets/img/logo-removebg.png"/>
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+
+  <script src="assets/js/main.js" defer></script>
+</head>
+
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("ll7i7SW43K4dNWyWh");
+  })();
+</script>
+
+<script src="main.js"></script>
+
+<body class="min-h-screen">
+
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-20">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+              <img
+                  src="./assets/img/logo-sensefons-blue.svg"
+                  alt="Cubics"
+                  class="h-8 w-auto"
+              />
+          </div>
+
+          <div class="flex items-center gap-4 sm:gap-6">
+              
+              <div class="flex text-sm font-medium border border-slate-300 rounded-full overflow-hidden">
+                  
+                  <a 
+                      href="#" 
+                      class="px-3 py-1 flex items-center gap-1.5 bg-cubics text-white font-bold" 
+                      aria-current="true"
+                  >
+                      <img 
+                          src="./assets/img/spain.svg" 
+                          alt="Español" 
+                          class="h-4 w-4 rounded-sm"
+                      />
+                      ES
+                  </a>
+                  
+                  <a 
+                      href="index-ca.html" 
+                      class="px-3 py-1 flex items-center gap-1.5 text-slate-600 hover:text-cubics transition bg-white"
+                  >
+                      <img 
+                          src="./assets/img/catalonia.svg" 
+                          alt="Catalán" 
+                          class="h-4 w-4 rounded-sm"
+                      />
+                      CA
+                  </a>
+              </div>
+              <a
+                  href="https://cubics.io/register"
+                  class="btn-cubics-ghost"
+              >
+                  Probar Cubics 
+              </a>
+          </div>
+      </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 pt-12 pb-20 lg:pt-20">
+
+    <section class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <div class="space-y-6">
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight text-slate-900">
+          Encuentre y conéctese con los mejores fabricantes industriales y proveedores de servicios en todo el mundo con
+          <span class="text-cubics">Cubics</span>.
+        </h1>
+
+        <p class="text-slate-600 text-sm sm:text-base">
+          Racionalice su proceso de compra y gestión de proveedores con soluciones a medida para su sector.
+        </p>
+
+        <div class="flex gap-3 pt-4">
+          <a
+            href="https://cubics.io/register"
+            class="relative inline-flex items-center gap-2 px-8 py-3 rounded-full
+                  bg-gradient-to-r from-[#4361EE] to-[#2740b8] text-white font-semibold
+                  shadow-[0_12px_30px_-10px_rgba(67,97,238,0.6)]
+                  hover:shadow-[0_16px_40px_-10px_rgba(67,97,238,0.8)]
+                  hover:scale-[1.03] transition-all duration-200 group"
+          >
+            Probar Cubics
+
+            <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+                fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="relative hidden lg:block h-[480px]">
+
+        <div class="absolute top-10 left-0 w-[360px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[-2deg]">
+          <img src="./assets/img/screens/screen1.png" class="rounded-2xl" />
+        </div>
+
+        <div class="absolute top-40 left-24 w-[400px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[3deg]">
+          <img src="./assets/img/screens/screen2-home.png" class="rounded-2xl" />
+        </div>
+
+        <div class="absolute top-20 left-52 w-[320px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[-1deg]">
+          <img src="./assets/img/screens/screen-6-cercaprovei.png" class="rounded-2xl" />
+        </div>
+
+      </div>
+
+      <div class="lg:hidden mt-8">
+        <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3">
+          
+          
+          <div class="snap-center flex-shrink-0">
+            <img 
+              src="./assets/img/screens/screen-6-cercaprovei.png" 
+              alt="Búsqueda de proveedores"
+              class="w-64 rounded-2xl shadow-lg border border-slate-200"
+            >
+          </div>
+
+          <div class="snap-center flex-shrink-0">
+            <img 
+              src="./assets/img/screens/screen-3-pressupostos.png" 
+              alt="Presupuestos y pedidos"
+              class="w-64 rounded-2xl shadow-lg border border-slate-200"
+            >
+          </div>
+
+          <div class="snap-center flex-shrink-0">
+            <img 
+              src="./assets/img/screens/screen2-home.png" 
+              alt="Inicio de Cubics"
+              class="w-64 rounded-2xl shadow-lg border border-slate-200"
+            >
+          </div>
+
+        </div>
+
+        <div class="flex justify-center gap-2 mt-1">
+          <span class="h-1.5 w-1.5 rounded-full bg-slate-400"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-slate-300"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-slate-300"></span>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <section id="about-cubics" class="max-w-4xl mx-auto px-4 mt-4 space-y-10">
+
+    <div class="space-y-4">
+      <p class="badge-cubics">
+        Presentación de Cubics
+      </p>
+
+      <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        <span class="text-cubics">Cubics</span>, la red industrial para el sector metalúrgico
+      </h2>
+
+      <p class="text-sm sm:text-base text-slate-600 leading-relaxed text-justify">
+        Es un placer anunciarle que Cubics nace como iniciativa para resolver diversos aspectos
+        clave de la cadena de suministro metalúrgico.
+      </p>
+
+      <p class="text-sm sm:text-base text-slate-600 leading-relaxed text-justify">
+        Cubics es una red industrial de empresas del sector cuyo objetivo es
+        desarrollar negocio conjuntamente. Se trata de una plataforma transversal de la que forman parte
+        tanto los consumidores de productos a medida como sus fabricantes.
+      </p>
+    </div>
+  </section>
+
+  <section id="roles-graph" class="max-w-5xl mx-auto px-4 mt-16 space-y-10 pb-16">
+
+    <div class="space-y-3 text-center">
+      <p class="badge-cubics">
+        Para quién es Cubics
+      </p>
+      <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+        Un punto de encuentro para proveedores y clientes del sector metalúrgico
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto text-justify">
+        Cubics conecta empresas que consumen producto a medida con los fabricantes que pueden producirlo,
+        facilitando toda la gestión comercial en un único espacio.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+
+      <article class="card-cubics p-6 lg:p-7 space-y-5 feature-block">
+        <h3 class="text-lg sm:text-xl font-semibold text-cubics">
+          Como proveedores del sector puede:
+        </h3>
+
+        <div class="space-y-4">
+
+          <div class="flex gap-3 items-start">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5.121 17.804A8 8 0 1118.88 6.196 8 8 0 015.12 17.804z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-900">
+                Configurar el perfil de empresa
+              </p>
+              <p class="text-xs sm:text-sm text-slate-600">
+                Muestre capacidades, sectores, certificaciones y ejemplos de proyectos para convertir
+                su perfil en un punto de atracción comercial.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 items-start">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0h-4l-2 3h-4l-2-3H4m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4" />
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-900">
+                Gestionar la información comercial de forma centralizada
+              </p>
+              <p class="text-xs sm:text-sm text-slate-600">
+                Todas las consultas, ofertas y pedidos en un mismo espacio, evitando la distorsión de
+                hilos de correos aislados y documentos dispersos.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 items-start">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-900">
+                Elegir las solicitudes que más se adapten a sus capacidades
+              </p>
+              <p class="text-xs sm:text-sm text-slate-600">
+                A partir de la publicación de las consultas de los clientes, puede centrar los esfuerzos
+                de cotización en aquellas oportunidades donde sea más competitivo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-3">
+          <img
+              src="./assets/img/screens/screen-4-borsasoli.png"
+              alt="Vista de solicitudes y respuestas para proveedores en Cubics"
+              class="w-full h-full"
+            >
+            </button>
+        </div>
+      </article>
+
+
+      <article class="card-cubics p-6 lg:p-7 space-y-5 feature-block">
+        <h3 class="text-lg sm:text-xl font-semibold text-cubics">
+          Como clientes del sector puede:
+        </h3>
+
+        <div class="space-y-4">
+
+          <div class="flex gap-3 items-start">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-900">
+                Acceder a un amplio abanico de posibilidades de fabricación
+              </p>
+              <p class="text-xs sm:text-sm text-slate-600">
+                Busque proveedores cualificados en técnicas concretas y capacidades específicas,
+                filtrando por tecnología, materiales, ubicación u otros criterios relevantes.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 items-start">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M11 5.882V19a1 1 0 01-1.447.894L5 17H3a1 1 0 01-1-1v-4a1 1 0 011-1h2l4.553-2.894A1 1 0 0111 9.118z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M15 10a3 3 0 110 6" />
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-900">
+                Hacer públicas las solicitudes de presupuesto
+              </p>
+              <p class="text-xs sm:text-sm text-slate-600">
+                Publique sus necesidades y permita que sean los proveedores más competitivos
+                los que se muestren interesados en dar respuesta.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 items-start">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+              </svg>
+            </div>
+            <div class="space-y-1">
+              <p class="text-sm font-semibold text-slate-900">
+                Efectuar pedidos y gestionar la información en un único espacio
+              </p>
+              <p class="text-xs sm:text-sm text-slate-600">
+                Formalice pedidos, comparta documentos y consulte el histórico de cada proyecto
+                desde Cubics, evitando la distorsión de hilos de correos aislados.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mt-4 space-y-3">
+          <img
+              src="./assets/img/screens/screen-3-pressupostos.png"
+              alt="Vista de presupuestos y pedidos para clientes en Cubics"
+              class="w-full h-full"
+            >
+            </button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+<section class="max-w-3xl mx-auto px-4 py-16">
+  
+  <div class="text-center mb-8 space-y-3">
+    <p class="badge-cubics">Contacto</p>
+    <h2 class="text-2xl sm:text-3xl font-semibold text-slate-900">
+      Solicita una demo de <span class="text-cubics">Cubics</span>
+    </h2>
+    <p class="text-slate-600 text-sm sm:text-base max-w-md mx-auto">
+      Póngase en contacto con nosotros y le mostraremos cómo Cubics puede ayudar a su equipo comercial y de producción.
+    </p>
+  </div>
+
+  
+  <form 
+    id="contact-form"
+    action="#"
+    method="POST"
+    class="card-cubics p-6 space-y-5"
+  >
+    <div class="flex flex-col">
+      <label for="name" class="text-sm font-semibold text-slate-800 mb-1">
+        Nombre y apellidos*
+      </label>
+      <input 
+        id="name"
+        type="text" 
+        name="user_name"
+        required
+        class="border border-slate-300 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-cubics focus:outline-none"
+      >
+    </div>
+
+    <div class="flex flex-col">
+      <label for="company" class="text-sm font-semibold text-slate-800 mb-1">
+        Empresa*
+      </label>
+      <input 
+        id="company"
+        type="text" 
+        name="company"
+        required
+        class="border border-slate-300 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-cubics focus:outline-none"
+      >
+    </div>
+
+    <div class="flex flex-col">
+      <label for="email" class="text-sm font-semibold text-slate-800 mb-1">
+        Correo electrónico*
+      </label>
+      <input 
+        id="email"
+        type="email" 
+        name="user_email"
+        required
+        class="border border-slate-300 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-cubics focus:outline-none"
+      >
+    </div>
+
+    <div class="flex flex-col">
+      <label for="message" class="text-sm font-semibold text-slate-800 mb-1">
+        Mensaje (opcional)
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        class="border border-slate-300 rounded-xl px-3 py-2 text-sm focus:ring-2 focus:ring-cubics focus:outline-none"
+      ></textarea>
+    </div>
+
+    <button 
+      type="submit"
+      class="btn-cubics-primary w-full"
+    >
+      Enviar solicitud
+    </button>
+
+    <p id="form-status" class="text-sm text-center mt-2"></p>
+  </form>
+
+
+
+</section>
+
+<footer class="border-t border-slate-200 mt-16 py-10">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col items-center gap-4 text-center">
+
+    <img 
+      src="./assets/img/logo-sensefons-blue.svg" 
+      alt="Cubics" 
+      class="h-6 opacity-70"
+    >
+
+    <div class="flex items-center gap-6 text-sm text-slate-600">
+
+      <a 
+        href="https://www.linkedin.com/company/cubics-link-sl/" 
+        target="_blank"
+        class="flex items-center gap-2 hover:text-cubics transition"
+      >
+        <img src="./assets/img/icons/linkedin.svg" class="h-6 w-6 opacity-70" alt="LinkedIn">
+      </a>
+
+    </div>
+
+    <p class="text-[11px] text-slate-400 pt-2">
+      © 2025 CUBICS LINK SL · Todos los derechos reservados
+    </p>
+
+  </div>
+</footer>
+
+<div id="video-modal" class="video-modal hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl w-full max-w-4xl shadow-2xl overflow-hidden">
+    <div class="flex items-center justify-between bg-slate-50 px-6 py-4 border-b border-slate-200">
+      <h3 class="text-lg font-semibold text-slate-900" id="modal-title">Demo de Cubics</h3>
+      <button 
+        id="close-modal-btn"
+        class="text-slate-400 hover:text-slate-600 transition"
+        aria-label="Cerrar"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="bg-black aspect-video flex items-center justify-center">
+      <iframe 
+        id="video-iframe"
+        class="w-full h-full"
+        src=""
+        title="Vídeo demo de Cubics"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullscreen
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+
+<div id="proximament-modal" class="proximament-modal hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl max-w-md w-full p-7 text-center shadow-2xl animate-fadeIn">
+
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-xl font-semibold text-slate-900">
+        ¡Próximamente!
+      </h3>
+      </button>
+    </div>
+
+    <p class="text-slate-600 leading-relaxed mb-6">
+      <span class="font-semibold text-slate-900">¡Cubics está a punto de llegar!</span><br>
+      Estamos poniendo las últimas piezas en su lugar para que todo funcione perfectamente.  
+      ¡Vuelve en unos días y sé de los primeros en acceder!
+    </p>
+
+    <button 
+      id="proximament-close-modal-btn"
+      class="px-6 py-2 bg-cubics text-white rounded-full font-medium hover:opacity-90 transition"
+    >
+      De acuerdo
+    </button>
+
+  </div>
+</div>
+
+
+
+ </body>
+</html>

@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Tots els botons amb text "Provar Cubics"
   const provarBtns = Array.from(document.querySelectorAll("a"))
-    .filter(a => a.textContent.includes("Provar Cubics"));
+    .filter(a => a.textContent.includes("Provar Cubics") || a.textContent.includes("Probar Cubics"));
 
   // Obrir modal
   provarBtns.forEach(btn => {
