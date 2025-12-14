@@ -86,8 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeProximamentBtn = document.getElementById("proximament-close-modal-btn");
 
   // Tots els botons amb text "Provar Cubics"
-  const provarBtns = Array.from(document.querySelectorAll("a"))
-    .filter(a => a.textContent.includes("Provar Cubics") || a.textContent.includes("Probar Cubics"));
+  // const provarBtns = Array.from(document.querySelectorAll("a"))
+  //   .filter(a => a.textContent.includes("Provar Cubics") || a.textContent.includes("Probar Cubics"));
 
   // Obrir modal
   provarBtns.forEach(btn => {
