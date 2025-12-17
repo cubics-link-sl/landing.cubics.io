@@ -26,58 +26,41 @@
   })();
 </script>
 
-<script src="main.js"></script>
 
 <body class="min-h-screen">
 
   <!-- HEADER estil app -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-20">
-      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-              <img
-                  src="./assets/img/logo-sensefons-blue.svg"
-                  alt="Cubics"
-                  class="h-8 w-auto"
-              />
-          </div>
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <img src="./assets/img/logo-sensefons-blue.svg" alt="Cubics" class="h-8 w-auto" />
+        </div>
 
-          <div class="flex items-center gap-4 sm:gap-6">
-              
-              <div class="flex text-sm font-medium border border-slate-300 rounded-full overflow-hidden">
-                  
-                  <a 
-                      href="index-es.html" 
-                      class="px-3 py-1 flex items-center gap-1.5 text-slate-600 hover:text-cubics transition bg-white"
-                  >
-                      <img 
-                          src="./assets/img/spain.svg" 
-                          alt="spain" 
-                          class="h-4 w-4 rounded-sm"
-                      />
-                      ES
-                  </a>
-                  
-                  <a 
-                      href="#" 
-                      class="px-3 py-1 flex items-center gap-1.5 bg-cubics text-white font-bold" 
-                      aria-current="true"
-                  >
-                      <img 
-                          src="./assets/img/catalonia.svg" 
-                          alt="Catalan" 
-                          class="h-4 w-4 rounded-sm"
-                      />
-                      CA
-                  </a>
-              </div>
-              <a
-                  href="https://cubics.io/register"
-                  class="btn-cubics-ghost"
-              >
-                  Provar Cubics 
-              </a>
-          </div>
-      </div>
+        <button id="mobile-menu-button" class="md:hidden p-2 text-slate-600">
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <div id="nav-menu" class="hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 p-4 flex-col gap-4 items-center md:static md:flex md:flex-row md:w-auto md:border-none md:p-0 md:flex md:gap-6 z-20">
+            
+            <div class="flex text-sm font-medium border border-slate-300 rounded-full overflow-hidden">
+                <a href="index-es.html" class="px-3 py-1 flex items-center gap-1.5 text-slate-600 hover:text-cubics transition bg-white">
+                    <img src="./assets/img/spain.svg" alt="es" class="h-4 w-4 rounded-sm" /> ES
+                </a>
+                <a href="#" class="px-3 py-1 flex items-center gap-1.5 bg-cubics text-white font-bold" aria-current="true">
+                    <img src="./assets/img/catalonia.svg" alt="ca" class="h-4 w-4 rounded-sm" /> CA
+                </a>
+            </div>
+
+            <a href="https://cubics.io/register" class="w-full text-center md:w-auto px-6 py-2 bg-[#4361EE] text-white rounded-full font-semibold hover:bg-[#2740b8] transition-colors">
+                Provar Cubics
+            </a>
+        </div>
+    </div>
   </header>
 
   <!-- HERO -->
