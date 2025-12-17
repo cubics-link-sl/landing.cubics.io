@@ -90,16 +90,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeProximamentBtn = document.getElementById("proximament-close-modal-btn");
 
   // DEFINICIÓ DE LA VARIABLE QUE DONAVA ERROR:
-  const provarBtns = Array.from(document.querySelectorAll("a")).filter(a => 
-    a.textContent.includes("Provar Cubics") || a.textContent.includes("Probar Cubics")
-  );
+  // const provarBtns = Array.from(document.querySelectorAll("a")).filter(a => 
+  //   a.textContent.includes("Provar Cubics") || a.textContent.includes("Probar Cubics")
+  // );
 
-  provarBtns.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault(); 
-      if (proximamentModal) proximamentModal.classList.remove("hidden");
-    });
-  });
+  // provarBtns.forEach(btn => {
+  //   btn.addEventListener("click", (e) => {
+  //     e.preventDefault(); 
+  //     if (proximamentModal) proximamentModal.classList.remove("hidden");
+  //   });
+  // });
 
   if (closeProximamentBtn) {
     closeProximamentBtn.addEventListener("click", () => {
