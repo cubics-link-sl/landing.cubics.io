@@ -130,6 +130,202 @@ body {
   justify-content: center;
 }
 
+/* ------------------------------
+   SELECTOR DE PERFIL (Proveïdors / Clients)
+------------------------------ */
+.role-switch {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 9999px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 14px 30px -24px rgba(15, 23, 42, 0.45);
+}
+
+.role-tab {
+  padding: 0.55rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease-out, background-color 0.15s ease-out,
+              box-shadow 0.15s ease-out;
+}
+
+.role-tab:hover {
+  color: var(--cubics-blue);
+}
+
+.role-tab.active {
+  background-color: var(--cubics-blue);
+  color: #fff;
+  box-shadow: 0 10px 22px -12px rgba(67, 97, 238, 0.8);
+}
+
+/* Cartes de cada panell */
+.role-card {
+  border-radius: 1.25rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 18px 40px -32px rgba(15, 23, 42, 0.45);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ------------------------------
+   BARALLA DE CARTES (deck)
+   Una carta gran al davant, les altres apilades darrere
+------------------------------ */
+.card-deck {
+  position: relative;
+  padding-bottom: 3rem; /* espai perquè es vegin les cartes de darrere */
+}
+
+.deck-card {
+  padding: 1.75rem;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.deck-card.is-active {
+  position: relative;
+  z-index: 3;
+  opacity: 1;
+  transform: none;
+}
+
+.deck-card.is-behind-1,
+.deck-card.is-behind-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.deck-card.is-behind-1 {
+  z-index: 2;
+  transform: translateY(22px) scale(0.95);
+  opacity: 0.5;
+}
+
+.deck-card.is-behind-2 {
+  z-index: 1;
+  transform: translateY(44px) scale(0.9);
+  opacity: 0.25;
+}
+
+/* Interior de la carta: text + captura */
+.deck-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.deck-card-media {
+  margin-top: 1rem;
+}
+
+.deck-card-media img {
+  cursor: zoom-in;
+}
+
+/* Lightbox per veure la captura a pantalla completa */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(15, 23, 42, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* Controls del deck (generats per JS) */
+.deck-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.deck-arrow {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease-out, border-color 0.15s ease-out,
+              background-color 0.15s ease-out;
+}
+
+.deck-arrow svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.deck-arrow:hover {
+  color: var(--cubics-blue);
+  border-color: rgba(67, 97, 238, 0.5);
+  background-color: rgba(67, 97, 238, 0.06);
+}
+
+.deck-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deck-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  background-color: #cbd5e1;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, width 0.2s ease-out;
+}
+
+.deck-dot.active {
+  background-color: var(--cubics-blue);
+  width: 1.25rem;
+}
+
+/* Entrada del deck en canviar de perfil */
+.role-panel.animate .card-deck {
+  animation: roleCardIn 0.45s ease-out both;
+}
+
+@keyframes roleCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Feature blocks per animació suau en scroll (opcional) */
 .feature-block {
   opacity: 0;

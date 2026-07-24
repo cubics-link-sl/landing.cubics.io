@@ -4,28 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LANDING CUBICS</title>
+  <title>Cubics — La red industrial del sector metalúrgico</title>
+  <meta name="description"
+    content="Cubics conecta empresas del sector metalúrgico: publique solicitudes de presupuesto, encuentre proveedores cualificados y gestione toda la información comercial en un único espacio." />
 
   <script src="https://cdn.tailwindcss.com"></script>
 
   <link rel="icon" type="image/png" href="./assets/img/logo-removebg.png" />
 
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
+  <!-- JS externo (emailjs primero: main.js lo inicializa al cargar) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </head>
-
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function () {
-    emailjs.init("ll7i7SW43K4dNWyWh");
-  })();
-</script>
-
-<script src="main.js"></script>
 
 <body class="min-h-screen">
 
@@ -101,17 +97,20 @@
 
         <div
           class="absolute top-10 left-0 w-[360px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[-2deg]">
-          <img src="./assets/img/screens/screen1.png" class="rounded-2xl" />
+          <img src="./assets/img/screens/screen1.webp" alt="Presupuestos en Cubics" loading="lazy" decoding="async"
+            class="rounded-2xl" />
         </div>
 
         <div
           class="absolute top-40 left-24 w-[400px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[3deg]">
-          <img src="./assets/img/screens/screen2-home.png" class="rounded-2xl" />
+          <img src="./assets/img/screens/screen2-home.webp" alt="Inicio de Cubics" loading="lazy" decoding="async"
+            class="rounded-2xl" />
         </div>
 
         <div
           class="absolute top-20 left-52 w-[320px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[-1deg]">
-          <img src="./assets/img/screens/screen-6-cercaprovei.png" class="rounded-2xl" />
+          <img src="./assets/img/screens/screen-6-cercaprovei.webp" alt="Búsqueda de proveedores" loading="lazy"
+            decoding="async" class="rounded-2xl" />
         </div>
 
       </div>
@@ -121,17 +120,17 @@
 
 
           <div class="snap-center flex-shrink-0">
-            <img src="./assets/img/screens/screen-6-cercaprovei.png" alt="Búsqueda de proveedores"
+            <img src="./assets/img/screens/screen-6-cercaprovei.webp" alt="Búsqueda de proveedores"
               class="w-64 rounded-2xl shadow-lg border border-slate-200">
           </div>
 
           <div class="snap-center flex-shrink-0">
-            <img src="./assets/img/screens/screen-3-pressupostos.png" alt="Presupuestos y pedidos"
-              class="w-64 rounded-2xl shadow-lg border border-slate-200">
+            <img src="./assets/img/screens/screen-3-pressupostos.webp" alt="Presupuestos y pedidos" loading="lazy"
+              decoding="async" class="w-64 rounded-2xl shadow-lg border border-slate-200">
           </div>
 
           <div class="snap-center flex-shrink-0">
-            <img src="./assets/img/screens/screen2-home.png" alt="Inicio de Cubics"
+            <img src="./assets/img/screens/screen2-home.webp" alt="Inicio de Cubics" loading="lazy" decoding="async"
               class="w-64 rounded-2xl shadow-lg border border-slate-200">
           </div>
 
@@ -186,155 +185,187 @@
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-8">
+    <!-- Selector de perfil: Proveedores / Clientes -->
+    <div class="flex justify-center feature-block">
+      <div class="role-switch" role="tablist" aria-label="Selecciona tu perfil">
+        <button type="button" class="role-tab active" data-role-tab="proveidors" role="tab" aria-selected="true">
+          Soy proveedor
+        </button>
+        <button type="button" class="role-tab" data-role-tab="clients" role="tab" aria-selected="false">
+          Soy cliente
+        </button>
+      </div>
+    </div>
 
-      <article class="card-cubics p-6 lg:p-7 space-y-5 feature-block">
-        <h3 class="text-lg sm:text-xl font-semibold text-cubics">
-          Como proveedores del sector puede:
-        </h3>
+    <!--------------------- PANEL PROVEEDORES --------------------->
+    <div class="role-panel animate space-y-8" data-role-panel="proveidors" role="tabpanel">
 
-        <div class="space-y-4">
+      <h3 class="text-lg sm:text-xl font-semibold text-cubics text-center">
+        Como proveedores del sector puede:
+      </h3>
 
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5.121 17.804A8 8 0 1118.88 6.196 8 8 0 015.12 17.804z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Configurar el perfil de empresa
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Muestre capacidades, sectores, certificaciones y ejemplos de proyectos para convertir
-                su perfil en un punto de atracción comercial.
-              </p>
-            </div>
+      <div class="card-deck max-w-4xl mx-auto" data-deck>
+
+        <!-- Carta 1 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5.121 17.804A8 8 0 1118.88 6.196 8 8 0 015.12 17.804z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
           </div>
-
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0h-4l-2 3h-4l-2-3H4m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Gestionar la información comercial de forma centralizada
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Todas las consultas, ofertas y pedidos en un mismo espacio, evitando la distorsión de
-                hilos de correos aislados y documentos dispersos.
-              </p>
-            </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Configurar el perfil de empresa
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Muestre capacidades, sectores, certificaciones y ejemplos de proyectos para convertir
+            su perfil en un punto de atracción comercial.
+          </p>
           </div>
-
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Elegir las solicitudes que más se adapten a sus capacidades
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                A partir de la publicación de las consultas de los clientes, puede centrar los esfuerzos
-                de cotización en aquellas oportunidades donde sea más competitivo.
-              </p>
-            </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Prov-1.webp" alt="Perfil de empresa en Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
           </div>
-        </div>
+        </article>
 
-        <div class="mt-4 space-y-3">
-          <img src="./assets/img/screens/screen-4-borsasoli.png"
-            alt="Vista de solicitudes y respuestas para proveedores en Cubics" class="w-full h-full">
-          </button>
-        </div>
-      </article>
-
-
-      <article class="card-cubics p-6 lg:p-7 space-y-5 feature-block">
-        <h3 class="text-lg sm:text-xl font-semibold text-cubics">
-          Como clientes del sector puede:
-        </h3>
-
-        <div class="space-y-4">
-
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Acceder a un amplio abanico de posibilidades de fabricación
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Busque proveedores cualificados en técnicas concretas y capacidades específicas,
-                filtrando por tecnología, materiales, ubicación u otros criterios relevantes.
-              </p>
-            </div>
+        <!-- Carta 2 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0h-4l-2 3h-4l-2-3H4m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4" />
+            </svg>
           </div>
-
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M11 5.882V19a1 1 0 01-1.447.894L5 17H3a1 1 0 01-1-1v-4a1 1 0 011-1h2l4.553-2.894A1 1 0 0111 9.118z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10a3 3 0 110 6" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Hacer públicas las solicitudes de presupuesto
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Publique sus necesidades y permita que sean los proveedores más competitivos
-                los que se muestren interesados en dar respuesta.
-              </p>
-            </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Gestionar la información comercial de forma centralizada
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Todas las consultas, ofertas y pedidos en un mismo espacio, evitando la distorsión de
+            hilos de correos aislados y documentos dispersos.
+          </p>
           </div>
-
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Efectuar pedidos y gestionar la información en un único espacio
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Formalice pedidos, comparta documentos y consulte el histórico de cada proyecto
-                desde Cubics, evitando la distorsión de hilos de correos aislados.
-              </p>
-            </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Prov-2.webp" alt="Gestión centralizada de la información comercial"
+              loading="lazy" decoding="async" class="w-full rounded-xl border border-slate-200">
           </div>
+        </article>
 
-        </div>
+        <!-- Carta 3 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Elegir las solicitudes que más se adapten a sus capacidades
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            A partir de la publicación de las consultas de los clientes, puede centrar los esfuerzos
+            de cotización en aquellas oportunidades donde sea más competitivo.
+          </p>
+          </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Prov-3.webp" alt="Bolsa de solicitudes para proveedores" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
 
-        <div class="mt-4 space-y-3">
-          <img src="./assets/img/screens/screen-3-pressupostos.png"
-            alt="Vista de presupuestos y pedidos para clientes en Cubics" class="w-full h-full">
-          </button>
-        </div>
-      </article>
+      </div>
+
+    </div>
+
+    <!--------------------- PANEL CLIENTES --------------------->
+    <div class="role-panel hidden space-y-8" data-role-panel="clients" role="tabpanel">
+
+      <h3 class="text-lg sm:text-xl font-semibold text-cubics text-center">
+        Como clientes del sector puede:
+      </h3>
+
+      <div class="card-deck max-w-4xl mx-auto" data-deck>
+
+        <!-- Carta 1 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Acceder a un amplio abanico de posibilidades de fabricación
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Busque proveedores cualificados en técnicas concretas y capacidades específicas,
+            filtrando por tecnología, materiales, ubicación u otros criterios relevantes.
+          </p>
+          </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Cli-1.webp" alt="Búsqueda de proveedores en Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
+
+        <!-- Carta 2 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M11 5.882V19a1 1 0 01-1.447.894L5 17H3a1 1 0 01-1-1v-4a1 1 0 011-1h2l4.553-2.894A1 1 0 0111 9.118z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10a3 3 0 110 6" />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Hacer públicas las solicitudes de presupuesto
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Publique sus necesidades y permita que sean los proveedores más competitivos
+            los que se muestren interesados en dar respuesta.
+          </p>
+          </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Cli-2.webp" alt="Solicitud de presupuesto en Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
+
+        <!-- Carta 3 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Efectuar pedidos y gestionar la información en un único espacio
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Formalice pedidos, comparta documentos y consulte el histórico de cada proyecto
+            desde Cubics, evitando la distorsión de hilos de correos aislados.
+          </p>
+          </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Cli-3.webp" alt="Gestión de pedidos en Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
+
+      </div>
 
     </div>
   </section>
@@ -447,7 +478,6 @@
         <h3 class="text-xl font-semibold text-slate-900">
           ¡Próximamente!
         </h3>
-        </button>
       </div>
 
       <p class="text-slate-600 leading-relaxed mb-6">

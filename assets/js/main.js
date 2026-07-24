@@ -1,7 +1,14 @@
 console.log("Cubics Landing carregada!");
 
 document.addEventListener("DOMContentLoaded", () => {
-  
+
+  // -------------------------------
+  // EMAILJS INIT (la llibreria es carrega amb defer abans d'aquest fitxer)
+  // -------------------------------
+  if (window.emailjs) {
+    emailjs.init("ll7i7SW43K4dNWyWh");
+  }
+
   // -------------------------------
   // HEADER RESPONSIVE
   // -------------------------------
@@ -18,6 +25,144 @@ document.addEventListener("DOMContentLoaded", () => {
       closeIcon.classList.toggle('hidden');
     });
   }
+
+  // -------------------------------
+  // SELECTOR DE PERFIL (Proveïdors / Clients)
+  // -------------------------------
+  const roleTabs = document.querySelectorAll("[data-role-tab]");
+  const rolePanels = document.querySelectorAll("[data-role-panel]");
+
+  roleTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const role = tab.dataset.roleTab;
+
+      roleTabs.forEach((t) => {
+        t.classList.toggle("active", t === tab);
+        t.setAttribute("aria-selected", t === tab ? "true" : "false");
+      });
+
+      rolePanels.forEach((panel) => {
+        const show = panel.dataset.rolePanel === role;
+        panel.classList.toggle("hidden", !show);
+        if (show) {
+          // reinicia l'animació d'entrada de les cartes
+          panel.classList.remove("animate");
+          void panel.offsetWidth;
+          panel.classList.add("animate");
+        }
+      });
+    });
+  });
+
+  // -------------------------------
+  // BARALLA DE CARTES (deck): mostra les funcionalitats d'una en una
+  // -------------------------------
+  document.querySelectorAll("[data-deck]").forEach((deck) => {
+    const cards = Array.from(deck.querySelectorAll(".deck-card"));
+    if (cards.length < 2) return;
+
+    let index = 0;
+    let timer = null;
+
+    // Controls (fletxes + puntets), generats aquí per no duplicar HTML
+    const controls = document.createElement("div");
+    controls.className = "deck-controls";
+
+    const prevBtn = document.createElement("button");
+    prevBtn.type = "button";
+    prevBtn.className = "deck-arrow";
+    prevBtn.setAttribute("aria-label", "Anterior");
+    prevBtn.innerHTML =
+      '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>';
+
+    const nextBtn = document.createElement("button");
+    nextBtn.type = "button";
+    nextBtn.className = "deck-arrow";
+    nextBtn.setAttribute("aria-label", "Següent");
+    nextBtn.innerHTML =
+      '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>';
+
+    const dotsBox = document.createElement("div");
+    dotsBox.className = "deck-dots";
+    const dots = cards.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "deck-dot";
+      dot.setAttribute("aria-label", "Carta " + (i + 1));
+      dot.addEventListener("click", () => {
+        goTo(i);
+        restartAutoplay();
+      });
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+
+    controls.append(prevBtn, dotsBox, nextBtn);
+    deck.after(controls);
+
+    function render() {
+      cards.forEach((card, i) => {
+        const pos = (i - index + cards.length) % cards.length;
+        card.classList.toggle("is-active", pos === 0);
+        card.classList.toggle("is-behind-1", pos === 1);
+        card.classList.toggle("is-behind-2", pos >= 2);
+      });
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+    }
+
+    function goTo(i) {
+      index = (i + cards.length) % cards.length;
+      render();
+    }
+
+    function restartAutoplay() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(index + 1), 5000);
+    }
+
+    prevBtn.addEventListener("click", () => {
+      goTo(index - 1);
+      restartAutoplay();
+    });
+    nextBtn.addEventListener("click", () => {
+      goTo(index + 1);
+      restartAutoplay();
+    });
+
+    // Pausa l'autoplay mentre el cursor és sobre la carta
+    deck.addEventListener("mouseenter", () => clearInterval(timer));
+    deck.addEventListener("mouseleave", restartAutoplay);
+
+    render();
+    restartAutoplay();
+  });
+
+  // -------------------------------
+  // LIGHTBOX: clic a una captura per veure-la gran
+  // -------------------------------
+  document.querySelectorAll(".deck-card-media img").forEach((img) => {
+    img.addEventListener("click", () => {
+      const overlay = document.createElement("div");
+      overlay.className = "lightbox";
+
+      const big = document.createElement("img");
+      big.src = img.src;
+      big.alt = img.alt;
+      overlay.appendChild(big);
+
+      function close() {
+        overlay.remove();
+        document.removeEventListener("keydown", onKey);
+      }
+      function onKey(e) {
+        if (e.key === "Escape") close();
+      }
+
+      overlay.addEventListener("click", close);
+      document.addEventListener("keydown", onKey);
+      document.body.appendChild(overlay);
+    });
+  });
 
   // -------------------------------
   // Animacions feature-block

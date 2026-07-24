@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LANDING CUBICS</title>
+  <title>Cubics — La xarxa industrial del sector metal·lúrgic</title>
+  <meta name="description"
+    content="Cubics connecta empreses del sector metal·lúrgic: publiqueu sol·licituds de pressupost, trobeu proveïdors qualificats i gestioneu tota la informació comercial en un únic espai." />
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,21 +15,15 @@
 
   <!-- El teu CSS personal (tema clar Cubics) -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet" />
 
-  <!-- JS extern -->
+  <!-- JS extern (emailjs primer: main.js l'inicialitza en carregar) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </head>
-
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function () {
-    emailjs.init("ll7i7SW43K4dNWyWh");
-  })();
-</script>
-
 
 <body class="min-h-screen">
 
@@ -108,17 +104,20 @@
 
         <div
           class="absolute top-10 left-0 w-[360px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[-2deg]">
-          <img src="./assets/img/screens/screen1.png" class="rounded-2xl" />
+          <img src="./assets/img/screens/screen1.webp" alt="Pressupostos a Cubics" loading="lazy" decoding="async"
+            class="rounded-2xl" />
         </div>
 
         <div
           class="absolute top-40 left-24 w-[400px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[3deg]">
-          <img src="./assets/img/screens/screen2-home.png" class="rounded-2xl" />
+          <img src="./assets/img/screens/screen2-home.webp" alt="Inici de Cubics" loading="lazy" decoding="async"
+            class="rounded-2xl" />
         </div>
 
         <div
           class="absolute top-20 left-52 w-[320px] rounded-2xl shadow-xl border border-slate-200 bg-white rotate-[-1deg]">
-          <img src="./assets/img/screens/screen-6-cercaprovei.png" class="rounded-2xl" />
+          <img src="./assets/img/screens/screen-6-cercaprovei.webp" alt="Cerca de proveïdors" loading="lazy"
+            decoding="async" class="rounded-2xl" />
         </div>
 
       </div>
@@ -129,17 +128,17 @@
 
 
           <div class="snap-center flex-shrink-0">
-            <img src="./assets/img/screens/screen-6-cercaprovei.png" alt="Cerca de proveïdors"
+            <img src="./assets/img/screens/screen-6-cercaprovei.webp" alt="Cerca de proveïdors"
               class="w-64 rounded-2xl shadow-lg border border-slate-200">
           </div>
 
           <div class="snap-center flex-shrink-0">
-            <img src="./assets/img/screens/screen-3-pressupostos.png" alt="Pressupostos i comandes"
-              class="w-64 rounded-2xl shadow-lg border border-slate-200">
+            <img src="./assets/img/screens/screen-3-pressupostos.webp" alt="Pressupostos i comandes" loading="lazy"
+              decoding="async" class="w-64 rounded-2xl shadow-lg border border-slate-200">
           </div>
 
           <div class="snap-center flex-shrink-0">
-            <img src="./assets/img/screens/screen2-home.png" alt="Inici de Cubics"
+            <img src="./assets/img/screens/screen2-home.webp" alt="Inici de Cubics" loading="lazy" decoding="async"
               class="w-64 rounded-2xl shadow-lg border border-slate-200">
           </div>
 
@@ -193,64 +192,82 @@
       </p>
     </div>
 
-    <!-- Dues targetes: Proveïdors / Clients -->
-    <div class="grid lg:grid-cols-2 gap-8">
+    <!-- Selector de perfil: Proveïdors / Clients -->
+    <div class="flex justify-center feature-block">
+      <div class="role-switch" role="tablist" aria-label="Selecciona el teu perfil">
+        <button type="button" class="role-tab active" data-role-tab="proveidors" role="tab" aria-selected="true">
+          Sóc proveïdor
+        </button>
+        <button type="button" class="role-tab" data-role-tab="clients" role="tab" aria-selected="false">
+          Sóc client
+        </button>
+      </div>
+    </div>
 
-      <!--------------------- TARGETA PROVEÏDORS --------------------->
-      <article class="card-cubics p-6 lg:p-7 space-y-5 feature-block">
-        <h3 class="text-lg sm:text-xl font-semibold text-cubics">
-          Com a proveïdors del sector podeu:
-        </h3>
+    <!--------------------- PANELL PROVEÏDORS --------------------->
+    <div class="role-panel animate space-y-8" data-role-panel="proveidors" role="tabpanel">
 
-        <div class="space-y-4">
+      <h3 class="text-lg sm:text-xl font-semibold text-cubics text-center">
+        Com a proveïdors del sector podeu:
+      </h3>
 
-          <!-- Punt 1 -->
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <!-- Icona (perfil) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M5.121 17.804A8 8 0 1118.88 6.196 8 8 0 015.12 17.804z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Configurar el perfil d’empresa
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Mostreu capacitats, sectors, certificacions i exemples de projectes per convertir
-                el vostre perfil en un punt d’atracció comercial.
-              </p>
-            </div>
+      <div class="card-deck max-w-4xl mx-auto" data-deck>
+
+        <!-- Carta 1 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <!-- Icona (perfil) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M5.121 17.804A8 8 0 1118.88 6.196 8 8 0 015.12 17.804z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
           </div>
-
-          <!-- Punt 3 -->
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <!-- Icona (inbox / centralització) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0h-4l-2 3h-4l-2-3H4m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Gestionar la informació comercial de forma centralitzada
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Totes les consultes, ofertes i comandes en un mateix espai, evitant la distorsió de
-                fils de correus aïllats i documents dispersos.
-              </p>
-            </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Configurar el perfil d’empresa
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Mostreu capacitats, sectors, certificacions i exemples de projectes per convertir
+            el vostre perfil en un punt d’atracció comercial.
+          </p>
           </div>
-        </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Prov-1.webp" alt="Perfil d'empresa a Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
 
-        <!-- Punt 3 -->
-        <div class="flex gap-3 items-start">
+        <!-- Carta 2 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <!-- Icona (inbox / centralització) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0h-4l-2 3h-4l-2-3H4m16 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4" />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Gestionar la informació comercial de forma centralitzada
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Totes les consultes, ofertes i comandes en un mateix espai, evitant la distorsió de
+            fils de correus aïllats i documents dispersos.
+          </p>
+          </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Prov-2.webp" alt="Gestió centralitzada de la informació comercial"
+              loading="lazy" decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
+
+        <!-- Carta 3 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
           <div class="icon-circle">
             <!-- Icona (check) -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
@@ -258,130 +275,110 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <div class="space-y-1">
-            <p class="text-sm font-semibold text-slate-900">
-              Escollir les sol·licituds que més s’adaptin a les vostres capacitats
-            </p>
-            <p class="text-xs sm:text-sm text-slate-600">
-              A partir de la publicació de les consultes dels clients, podeu centrar els esforços
-              de cotització en aquelles oportunitats on sou més competitius.
-            </p>
+          <p class="text-sm font-semibold text-slate-900">
+            Escollir les sol·licituds que més s’adaptin a les vostres capacitats
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            A partir de la publicació de les consultes dels clients, podeu centrar els esforços
+            de cotització en aquelles oportunitats on sou més competitius.
+          </p>
           </div>
-        </div>
-
-        <!-- Media Proveïdors: captura o vídeo -->
-        <div class="mt-4 space-y-3">
-          <!-- <button 
-            class="demo-btn media-frame h-48 sm:h-56 w-full hover:opacity-80 transition relative group cursor-pointer"
-            data-video-id="demo-providers"
-            aria-label="Veure demo"
-          > -->
-          <img src="./assets/img/screens/screen-4-borsasoli.png"
-            alt="Vista de sol·licituds i respostes per a proveïdors a Cubics" class="w-full h-full">
-          <!-- Play icon overlay -->
-          <!-- <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transition" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div> -->
-          </button>
-        </div>
-      </article>
-
-
-      <!--------------------- TARGETA CLIENTS --------------------->
-
-      <article class="card-cubics p-6 lg:p-7 space-y-5 feature-block">
-        <h3 class="text-lg sm:text-xl font-semibold text-cubics">
-          Com a clients del sector podeu:
-        </h3>
-
-        <div class="space-y-4">
-
-          <!-- Punt 1 -->
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <!-- Icona (search) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Accedir a un ampli ventall de possibilitats de fabricació
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Cerqueu proveïdors qualificats en tècniques concretes i capacitats específiques,
-                filtrant per tecnologia, materials, ubicació o altres criteris rellevants.
-              </p>
-            </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Prov-3.webp" alt="Borsa de sol·licituds per a proveïdors" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
           </div>
+        </article>
 
-          <!-- Punt 2 -->
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <!-- Icona (megàfon / publicació) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M11 5.882V19a1 1 0 01-1.447.894L5 17H3a1 1 0 01-1-1v-4a1 1 0 011-1h2l4.553-2.894A1 1 0 0111 9.118z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10a3 3 0 110 6" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Fer públiques les sol·licituds de pressupost
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Publiqueu les vostres necessitats i permeteu que siguin els proveïdors més competitius
-                els que es mostrin interessats a donar resposta.
-              </p>
-            </div>
+      </div>
+
+    </div>
+
+    <!--------------------- PANELL CLIENTS --------------------->
+    <div class="role-panel hidden space-y-8" data-role-panel="clients" role="tabpanel">
+
+      <h3 class="text-lg sm:text-xl font-semibold text-cubics text-center">
+        Com a clients del sector podeu:
+      </h3>
+
+      <div class="card-deck max-w-4xl mx-auto" data-deck>
+
+        <!-- Carta 1 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <!-- Icona (search) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z" />
+            </svg>
           </div>
-
-          <!-- Punt 3 -->
-          <div class="flex gap-3 items-start">
-            <div class="icon-circle">
-              <!-- Icona (document / comanda) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
-              </svg>
-            </div>
-            <div class="space-y-1">
-              <p class="text-sm font-semibold text-slate-900">
-                Efectuar comandes i gestionar la informació en un únic espai
-              </p>
-              <p class="text-xs sm:text-sm text-slate-600">
-                Formalitzeu comandes, compartiu documents i consulteu l’històric de cada projecte
-                des de Cubics, evitant la distorsió de fils de correus aïllats.
-              </p>
-            </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Accedir a un ampli ventall de possibilitats de fabricació
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Cerqueu proveïdors qualificats en tècniques concretes i capacitats específiques,
+            filtrant per tecnologia, materials, ubicació o altres criteris rellevants.
+          </p>
           </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Cli-1.webp" alt="Cerca de proveïdors a Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
 
-        </div>
+        <!-- Carta 2 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <!-- Icona (megàfon / publicació) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M11 5.882V19a1 1 0 01-1.447.894L5 17H3a1 1 0 01-1-1v-4a1 1 0 011-1h2l4.553-2.894A1 1 0 0111 9.118z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10a3 3 0 110 6" />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Fer públiques les sol·licituds de pressupost
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Publiqueu les vostres necessitats i permeteu que siguin els proveïdors més competitius
+            els que es mostrin interessats a donar resposta.
+          </p>
+          </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Cli-2.webp" alt="Sol·licitud de pressupost a Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
 
-        <!-- Media Clients: captura o vídeo -->
-        <div class="mt-4 space-y-3">
-          <!-- <button 
-            class="demo-btn media-frame h-48 sm:h-56 w-full hover:opacity-80 transition relative group cursor-pointer"
-            data-video-id="demo-clients"
-            aria-label="Veure demo"
-          > -->
-          <img src="./assets/img/screens/screen-3-pressupostos.png"
-            alt="Vista de pressupostos i comandes per a clients a Cubics" class="w-full h-full">
-          <!-- Play icon overlay -->
-          <!-- <div class="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/30 transition">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white transition" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-            </div> -->
-          </button>
-        </div>
-      </article>
+        <!-- Carta 3 -->
+        <article class="role-card deck-card">
+          <div class="deck-card-text">
+          <div class="icon-circle">
+            <!-- Icona (document / comanda) -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cubics" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+            </svg>
+          </div>
+          <p class="text-sm font-semibold text-slate-900">
+            Efectuar comandes i gestionar la informació en un únic espai
+          </p>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Formalitzeu comandes, compartiu documents i consulteu l’històric de cada projecte
+            des de Cubics, evitant la distorsió de fils de correus aïllats.
+          </p>
+          </div>
+          <div class="deck-card-media">
+            <img src="./assets/img/screens/Cli-3.webp" alt="Gestió de comandes a Cubics" loading="lazy"
+              decoding="async" class="w-full rounded-xl border border-slate-200">
+          </div>
+        </article>
+
+      </div>
 
     </div>
   </section>
@@ -509,7 +506,6 @@
         <h3 class="text-xl font-semibold text-slate-900">
           Pròximament!
         </h3>
-        </button>
       </div>
 
       <!-- Contingut estilós -->
