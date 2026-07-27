@@ -1,6 +1,49 @@
-console.log("Cubics Landing carregada!");
-
 document.addEventListener("DOMContentLoaded", () => {
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // -------------------------------
+  // OMBRA DEL HEADER + BARRA DE PROGRÉS DE SCROLL
+  // -------------------------------
+  const header = document.querySelector("header");
+  const progressBar = document.createElement("div");
+  progressBar.className = "scroll-progress";
+  document.body.appendChild(progressBar);
+
+  const onScroll = () => {
+    if (header) header.classList.toggle("scrolled", window.scrollY > 10);
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.transform = "scaleX(" + (total > 0 ? window.scrollY / total : 0) + ")";
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // -------------------------------
+  // PARAL·LAXI DEL HERO: les captures segueixen el cursor
+  // -------------------------------
+  const heroVisual = document.querySelector(".hero-visual");
+  if (heroVisual && !prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
+    const layers = Array.from(heroVisual.children);
+    const rotations = [-2, 3, -1]; // rotació base de cada finestra (classes rotate-[..])
+    const heroSection = heroVisual.closest("section");
+
+    heroSection.addEventListener("mousemove", (e) => {
+      const rect = heroVisual.getBoundingClientRect();
+      const x = (e.clientX - rect.left - rect.width / 2) / rect.width;
+      const y = (e.clientY - rect.top - rect.height / 2) / rect.height;
+
+      layers.forEach((layer, i) => {
+        const depth = (i + 1) * 7;
+        layer.style.transform =
+          "translate(" + (x * depth).toFixed(1) + "px, " + (y * depth).toFixed(1) + "px) " +
+          "rotate(" + rotations[i] + "deg)";
+      });
+    });
+
+    heroSection.addEventListener("mouseleave", () => {
+      layers.forEach((layer) => (layer.style.transform = ""));
+    });
+  }
 
   // -------------------------------
   // EMAILJS INIT (la llibreria es carrega amb defer abans d'aquest fitxer)
@@ -167,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------
   // Animacions feature-block
   // -------------------------------
-  const blocks = document.querySelectorAll(".feature-block");
+  const blocks = document.querySelectorAll(".feature-block, .reveal, .reveal-stagger");
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
