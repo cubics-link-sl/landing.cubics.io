@@ -130,6 +130,202 @@ body {
   justify-content: center;
 }
 
+/* ------------------------------
+   SELECTOR DE PERFIL (Proveïdors / Clients)
+------------------------------ */
+.role-switch {
+  display: inline-flex;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 9999px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 14px 30px -24px rgba(15, 23, 42, 0.45);
+}
+
+.role-tab {
+  padding: 0.55rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease-out, background-color 0.15s ease-out,
+              box-shadow 0.15s ease-out;
+}
+
+.role-tab:hover {
+  color: var(--cubics-blue);
+}
+
+.role-tab.active {
+  background-color: var(--cubics-blue);
+  color: #fff;
+  box-shadow: 0 10px 22px -12px rgba(67, 97, 238, 0.8);
+}
+
+/* Cartes de cada panell */
+.role-card {
+  border-radius: 1.25rem;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 18px 40px -32px rgba(15, 23, 42, 0.45);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* ------------------------------
+   BARALLA DE CARTES (deck)
+   Una carta gran al davant, les altres apilades darrere
+------------------------------ */
+.card-deck {
+  position: relative;
+  padding-bottom: 3rem; /* espai perquè es vegin les cartes de darrere */
+}
+
+.deck-card {
+  padding: 1.75rem;
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease;
+}
+
+.deck-card.is-active {
+  position: relative;
+  z-index: 3;
+  opacity: 1;
+  transform: none;
+}
+
+.deck-card.is-behind-1,
+.deck-card.is-behind-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+}
+
+.deck-card.is-behind-1 {
+  z-index: 2;
+  transform: translateY(22px) scale(0.95) rotate(1.2deg);
+  opacity: 0.5;
+}
+
+.deck-card.is-behind-2 {
+  z-index: 1;
+  transform: translateY(44px) scale(0.9) rotate(-1.5deg);
+  opacity: 0.25;
+}
+
+/* Interior de la carta: text + captura */
+.deck-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.deck-card-media {
+  margin-top: 1rem;
+}
+
+.deck-card-media img {
+  cursor: zoom-in;
+}
+
+/* Lightbox per veure la captura a pantalla completa */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(15, 23, 42, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: zoom-out;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 0.75rem;
+  box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.6);
+}
+
+/* Controls del deck (generats per JS) */
+.deck-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.deck-arrow {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease-out, border-color 0.15s ease-out,
+              background-color 0.15s ease-out;
+}
+
+.deck-arrow svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.deck-arrow:hover {
+  color: var(--cubics-blue);
+  border-color: rgba(67, 97, 238, 0.5);
+  background-color: rgba(67, 97, 238, 0.06);
+}
+
+.deck-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.deck-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  background-color: #cbd5e1;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, width 0.2s ease-out;
+}
+
+.deck-dot.active {
+  background-color: var(--cubics-blue);
+  width: 1.25rem;
+}
+
+/* Entrada del deck en canviar de perfil */
+.role-panel.animate .card-deck {
+  animation: roleCardIn 0.45s ease-out both;
+}
+
+@keyframes roleCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Feature blocks per animació suau en scroll (opcional) */
 .feature-block {
   opacity: 0;
@@ -158,6 +354,293 @@ body {
   height: 100%;
   object-fit: contain;
   border-radius: 0.9rem;
+}
+
+/* ------------------------------
+   POLISH: scroll suau, entrades i ritme de seccions
+------------------------------ */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Banda blanca a tota l'amplada per donar ritme entre seccions */
+.section-band {
+  background-color: #fff;
+  box-shadow: 0 0 0 100vmax #fff;
+  clip-path: inset(0 -100vmax);
+}
+
+/* Ombra subtil del header quan es fa scroll */
+header.scrolled {
+  box-shadow: 0 6px 20px -12px rgba(15, 23, 42, 0.18);
+}
+
+/* Entrada del hero en carregar la pàgina */
+.hero-enter {
+  opacity: 0;
+  animation: heroIn 0.7s ease-out forwards;
+}
+
+.hero-enter-1 { animation-delay: 0.15s; }
+.hero-enter-2 { animation-delay: 0.3s; }
+
+@keyframes heroIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Captures del hero: entrada lateral + resplendor de marca al darrere */
+.hero-visual {
+  animation: heroVisualIn 0.8s ease-out 0.2s both;
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: -10% -8%;
+  background: radial-gradient(circle at 55% 45%, rgba(67, 97, 238, 0.16), transparent 62%);
+  z-index: -1;
+}
+
+@keyframes heroVisualIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Aparició suau en fer scroll (mateix observer que .feature-block) */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Botó secundari del hero (mateixa alçada que el primari) */
+.btn-hero-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  border: 1px solid rgba(67, 97, 238, 0.35);
+  background-color: #fff;
+  color: var(--cubics-blue);
+  transition: background-color 0.15s ease-out, border-color 0.15s ease-out,
+              transform 0.1s ease-out;
+}
+
+.btn-hero-secondary:hover {
+  background-color: rgba(67, 97, 238, 0.06);
+  border-color: rgba(67, 97, 238, 0.55);
+  transform: translateY(-1px);
+}
+
+/* ------------------------------
+   ULTRA: animacions extra
+------------------------------ */
+
+/* Barra de progrés de lectura (creada per JS) */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cubics-blue), #7c95ff);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  z-index: 60;
+  pointer-events: none;
+}
+
+/* Blobs de gradient flotants al fons de la pàgina */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+body::before {
+  width: 420px;
+  height: 420px;
+  top: -120px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(67, 97, 238, 0.35), transparent 70%);
+  animation: blobFloat 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  width: 360px;
+  height: 360px;
+  bottom: -100px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(124, 149, 255, 0.3), transparent 70%);
+  animation: blobFloat 22s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blobFloat {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(40px, 60px) scale(1.15); }
+}
+
+/* Shimmer a la paraula "Cubics" del títol */
+.text-shimmer {
+  background: linear-gradient(90deg, var(--cubics-blue) 0%, #8aa0ff 45%, var(--cubics-blue-dark) 70%, var(--cubics-blue) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: shimmer 3.5s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% center; }
+}
+
+/* CTA principal: pols lluminós + reflex en hover */
+.cta-pulse {
+  overflow: hidden;
+  animation: ctaPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 12px 30px -10px rgba(67, 97, 238, 0.6); }
+  50% { box-shadow: 0 14px 42px -8px rgba(67, 97, 238, 0.95); }
+}
+
+.cta-pulse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -80%;
+  width: 50%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+}
+
+.cta-pulse:hover::before {
+  animation: ctaShine 0.7s ease-out;
+}
+
+@keyframes ctaShine {
+  to { left: 130%; }
+}
+
+/* Subratllat que es dibuixa sota els títols de secció */
+.reveal h2::after,
+.reveal-stagger h2::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  margin-top: 0.6rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--cubics-blue), #8aa0ff);
+  transition: width 0.6s ease-out 0.3s;
+}
+
+.reveal.visible h2::after,
+.reveal-stagger.visible h2::after {
+  width: 3.5rem;
+}
+
+.text-center h2::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reveal esglaonat: els fills entren en cascada */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+}
+
+.reveal-stagger.visible > * {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.24s; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.36s; }
+
+/* Icona de la carta activa: petit "pop" en aparèixer */
+.deck-card.is-active .icon-circle {
+  animation: iconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+}
+
+@keyframes iconPop {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Paral·laxi del hero: transició suau entre posicions del cursor */
+.hero-visual > div {
+  transition: transform 0.35s ease-out;
+  will-change: transform;
+}
+
+/* Accessibilitat: respecta la preferència de menys moviment */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .hero-enter,
+  .hero-visual,
+  .cta-pulse,
+  .text-shimmer,
+  .deck-card.is-active .icon-circle {
+    animation: none;
+    opacity: 1;
+  }
+
+  body::before,
+  body::after {
+    animation: none;
+  }
+
+  .reveal,
+  .feature-block,
+  .reveal-stagger > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal h2::after,
+  .reveal-stagger h2::after {
+    width: 3.5rem;
+    transition: none;
+  }
 }
 
 /* VIDEO MODAL STYLES */
