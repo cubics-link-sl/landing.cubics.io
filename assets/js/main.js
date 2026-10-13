@@ -223,6 +223,135 @@ document.addEventListener("DOMContentLoaded", () => {
   blocks.forEach((block) => observer.observe(block));
 
   // -------------------------------
+  // TUTORIALS EN VÍDEO: reproductor lleuger (play/pausa, progrés, pantalla completa)
+  // -------------------------------
+  const tutorialMedias = Array.from(document.querySelectorAll("[data-tutorial-media]"));
+
+  if (tutorialMedias.length) {
+    const videos = tutorialMedias.map((m) => m.querySelector("video"));
+
+    const fmtTime = (s) => {
+      if (!isFinite(s) || s < 0) s = 0;
+      return Math.floor(s / 60) + ":" + String(Math.floor(s % 60)).padStart(2, "0");
+    };
+
+    // Només un vídeo alhora
+    const pauseOthers = (current) => {
+      videos.forEach((v) => {
+        if (v !== current && !v.paused) v.pause();
+      });
+    };
+
+    tutorialMedias.forEach((media) => {
+      const video = media.querySelector("video");
+      const playBtn = media.querySelector(".tutorial-play");
+      const fsBtn = media.querySelector(".tutorial-fullscreen");
+      const progress = media.querySelector(".tutorial-progress");
+      const bar = progress.querySelector("i");
+      const durationEl = media.querySelector(".tutorial-duration");
+
+      const playText = playBtn.querySelector(".tutorial-play-text");
+      const setLabel = (key) => {
+        const label = playBtn.dataset["label" + key];
+        if (label) playBtn.setAttribute("aria-label", label);
+        const text = playBtn.dataset["text" + key];
+        if (text && playText) playText.textContent = text;
+      };
+
+      const updateTime = () => {
+        const d = video.duration;
+        if (!isFinite(d) || !d) return;
+        const pct = (video.currentTime / d) * 100;
+        bar.style.width = pct + "%";
+        progress.setAttribute("aria-valuenow", Math.round(pct));
+        durationEl.textContent = media.classList.contains("has-started")
+          ? fmtTime(video.currentTime) + " / " + fmtTime(d)
+          : fmtTime(d);
+      };
+
+      const toggle = () => {
+        if (video.paused || video.ended) {
+          pauseOthers(video);
+          const p = video.play();
+          if (p && p.catch) p.catch(() => {});
+        } else {
+          video.pause();
+        }
+      };
+
+      video.addEventListener("loadedmetadata", updateTime);
+      video.addEventListener("timeupdate", updateTime);
+
+      video.addEventListener("play", () => {
+        media.classList.add("is-playing", "has-started");
+        media.classList.remove("is-ended");
+        setLabel("Pause");
+      });
+
+      video.addEventListener("pause", () => {
+        media.classList.remove("is-playing");
+        setLabel("Play");
+      });
+
+      video.addEventListener("ended", () => {
+        media.classList.remove("is-playing");
+        media.classList.add("is-ended");
+        setLabel("Replay");
+      });
+
+      // Clic sobre el vídeo o el botó central
+      video.addEventListener("click", toggle);
+      playBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggle();
+      });
+
+      // Saltar a un punt: clic o fletxes sobre la barra de progrés
+      const seekTo = (ratio) => {
+        if (!isFinite(video.duration)) return;
+        video.currentTime = Math.min(Math.max(ratio, 0), 1) * video.duration;
+        updateTime();
+      };
+
+      progress.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const rect = progress.getBoundingClientRect();
+        seekTo((e.clientX - rect.left) / rect.width);
+      });
+
+      progress.addEventListener("keydown", (e) => {
+        if (!isFinite(video.duration)) return;
+        const step = 5 / video.duration;
+        if (e.key === "ArrowRight") { e.preventDefault(); seekTo(video.currentTime / video.duration + step); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); seekTo(video.currentTime / video.duration - step); }
+        if (e.key === " " || e.key === "Enter") { e.preventDefault(); toggle(); }
+      });
+
+      // Pantalla completa (iOS Safari només permet el vídeo natiu)
+      fsBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else if (media.requestFullscreen) {
+          media.requestFullscreen();
+        } else if (video.webkitEnterFullscreen) {
+          video.webkitEnterFullscreen();
+        }
+      });
+    });
+
+    // Pausa automàtica quan el vídeo surt de la pantalla
+    const mediaObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const video = entry.target.querySelector("video");
+        if (!entry.isIntersecting && !video.paused) video.pause();
+      });
+    }, { threshold: 0.25 });
+
+    tutorialMedias.forEach((m) => mediaObserver.observe(m));
+  }
+
+  // -------------------------------
   // VIDEO MODAL FUNCTIONALITY
   // -------------------------------
   const videoModal = document.getElementById("video-modal");
